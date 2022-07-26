@@ -1,6 +1,6 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
-
+const toDoItems = new Array();
 
 // En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
@@ -16,9 +16,10 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
+function ToDo (description) {
   // Tu código acá:
-
+  this.description = description;
+  this.complete = false;
 }
 
 
