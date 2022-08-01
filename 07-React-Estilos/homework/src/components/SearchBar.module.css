@@ -1,0 +1,16 @@
+.input {
+    background-color: white;
+    width: min-content;
+    height: min-content;
+    border: gray solid 1px;
+    border-radius: 2px;    
+}
+
+.bttn {
+    background-color: grey;
+    width: min-content;
+    height: min-content;
+    border: gray solid 1px;
+    border-radius: 2px;
+    color: white;    
+}

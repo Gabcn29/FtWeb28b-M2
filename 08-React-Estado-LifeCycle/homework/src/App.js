@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Cards from './Cards.jsx';
+import Nav from './Nav.jsx';
 
-export default function App() {
+
+ function App() {
+  const [cities, setCities] = useState([]);
   return (
     <div className="App">
-      { /* Tu código acá: */ }
-      <h1>Título</h1>
+      {  }
+      
     </div>
   );
 }
+
+export default App;
