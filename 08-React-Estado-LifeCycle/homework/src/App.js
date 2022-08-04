@@ -6,30 +6,41 @@ import Nav from './components/Nav.jsx';
 
  function App() {
   const [cities, setCities] = useState([]);
-
-function onSearch(ciudad) {
-  const ciudadEjemplo = {
-    min: 32,
-    max: 35,
-    img: "03n",
-    id: 2172797,
-    wind: 3.6,
-    temp: 300.15,
-    name: "Cairns",
-    weather: "Clouds",
-    clouds: 40,
-    latitud: -16.92,
-    longitud: 145.77
-  };
-  setCities(oldCities => [...oldCities, ciudadEjemplo]);
-}
-
+  const apiKey ='68fd305033a6d75530d862d73404b3a6';
+    function onSearch(ciudad) {
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
+        .then(r => r.json())
+        .then((recurso) => {
+          if (recurso.main !== undefined){
+            const ciudad = {
+              min: Math.round(recurso.main.temp_min),
+              max: Math.round(recurso.main.temp_max),
+              img: recurso.weather[0].icon,
+              id: recurso.id,
+              wind: recurso.wind.speed,
+              temp: recurso.main.temp,
+              name: recurso.name,
+              weather: recurso.weather[0].main,
+              clouds: recurso.clouds.all,
+              latitud: recurso.coord.lat,
+              longitud: recurso.coord.lon
+            };
+          setCities(oldCities => [...oldCities, ciudad]);
+          } else {
+            alert('ciudad no encontrada')
+          }
+        })
+    }
+  function onClose(id) {
+      setCities(oldCities => oldCities.filter(c => c.id != id));
+      
+  }
   return (
     <div className="App">
       <Nav onSearch={onSearch}/>
-      <Cards />
+      <Cards cities={cities} onClose={onClose}  />
     </div>
-  );
+    );
 }
 
 export default App;

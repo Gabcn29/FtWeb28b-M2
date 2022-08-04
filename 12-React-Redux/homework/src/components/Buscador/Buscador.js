@@ -18,7 +18,7 @@ export class Buscador extends Component {
   handleSubmit(event) {
     event.preventDefault();
   }
-
+  
   render() {
     const { title } = this.state;
     return (
@@ -43,6 +43,8 @@ export class Buscador extends Component {
       </div>
     );
   }
+
+  
 }
 
-export default Buscador;
+export default connect()(Buscador);
